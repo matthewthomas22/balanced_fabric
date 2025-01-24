@@ -105,11 +105,30 @@
       border-radius: 50%;
       display: inline-block;
     }
+
+    .displayData_container{
+      background-color: white;
+      position: fixed;
+      bottom: 100px;
+      right: 100px;
+      z-index: 9999;
+    }
+
+    .displayData_content{
+
+    }
   </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
 
+    <?php $total_fabric_received = $this->session->userdata('ses_ttl_rcvd');?>
+
+    <div class="displayData_container">
+      <div class="displayData_content">
+        <p style="margin: 0; padding: 0;" >This is Total Fabric received: <?= number_format($total_fabric_received,2,",",".")?> </p>
+      </div>
+    </div>
 
 
 
@@ -441,6 +460,7 @@
             <?php if ($this->session->userdata('ses_filter') == TRUE) : ?>
               <?php if (count($fab) > 0) : ?>
                 <?php
+                
                 $ttl_rcvd = $this->session->userdata('ses_ttl_rcvd');
                 $ttl_issued = 0;
                 $ttl_issued_rmk = 0;
@@ -648,6 +668,7 @@
   <script type="text/javascript" src="<?php echo base_url() ?>assets/DataTables/jszip.min.js"></script>
 
   <script>
+
     var table;
     document.onkeydown = function(evt) {
       evt = evt || window.event;
@@ -1274,6 +1295,10 @@
     $('#Mod_updateData').on('keyup', "#t_fab_width", function(e) {
     //   $("#t_fab_width_costing").val(this.value);
     });
+
+    // const total_fabric_received = <? echo json_encode($this->session->userdata('ses_ttl_rcvd'))?>;
+
+    //   console.log("INI ADALAH TOTAL FABRIC RECEIVED = ", total_fabric_received);
   </script>
 </body>
 

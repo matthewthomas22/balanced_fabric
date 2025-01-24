@@ -137,5 +137,16 @@ class Fab_received extends CI_Controller{
 
   }
 
+  
+  public function update_fab_qty_received(){
+    $result = json_decode($this->input->raw_input_stream, true);
+
+    $queryToModel = $this->m_fab_received->update_fab_qty_received($result);
+
+    echo json_encode($queryToModel);
+
+
+  }
+
 }
 

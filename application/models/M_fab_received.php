@@ -21,6 +21,22 @@ class M_fab_received extends CI_Model{
         return "Transaction committed!";
     }
   }
+  public function update_fab_qty_received($data){
+    $this->db->trans_start();
+      foreach ($data as $key) {
+          $this->db->query($key);
+      }
+    $this->db->trans_complete();
+
+    
+    if ($this->db->trans_status() === FALSE) {
+        $this->db->trans_rollback();
+        return "Transaction rolled back!";
+    } else {
+        $this->db->trans_commit();
+        return "Transaction committed!";
+    }
+  }
 
   function view_fab_received() {
         $string = "select * from prominent.v_fabric_received order by zroh,id ";
