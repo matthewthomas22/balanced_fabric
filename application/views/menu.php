@@ -286,6 +286,20 @@
                     </a>
                     </li>
 
+                    <li class="nav-item ">
+                    <a href="<?php echo base_url() ?>index.php/fab_received/view_fabric_received_data" class="nav-link">
+                        <i class="nav-icon fas fa-th"></i>
+                        <button style="outline: none;
+                                        border: none;
+                                        background: transparent;
+                                        color: white;
+                                        padding: 0; "  
+                        >
+                          <p>Fabric Received Table</p>
+                        </button>
+                    </a>
+                    </li>
+
 
                 <?php endif;?>
 

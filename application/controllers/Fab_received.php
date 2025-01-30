@@ -13,6 +13,51 @@ class Fab_received extends CI_Controller{
 
   }
 
+  public function update_fab_qty_received_by_table(){
+    $data = json_decode($this->input->raw_input_stream, true);
+
+    $result = $this->m_fab_received->update_fab_qty_received_by_table($data);
+
+    echo json_encode($result);
+  }
+  public function update_eta_by_table(){
+    $data = json_decode($this->input->raw_input_stream, true);
+
+    $result = $this->m_fab_received->update_eta_by_table($data);
+
+    echo json_encode($result);
+  }
+  public function update_etd_by_table(){
+    $data = json_decode($this->input->raw_input_stream, true);
+
+    $result = $this->m_fab_received->update_etd_by_table($data);
+
+    echo json_encode($result);
+  }
+  public function update_fab_received_date_by_table(){
+    $data = json_decode($this->input->raw_input_stream, true);
+
+    $result = $this->m_fab_received->update_fab_received_date_by_table($data);
+
+    echo json_encode($result);
+  }
+
+
+  public function view_fabric_received_data(){
+
+    $this->load->view('v_edittable_fabric_received');
+
+  }
+
+  public function get_data_fabric_received(){
+    $data = json_decode($this->input->raw_input_stream, true);
+
+    $result = $this->m_fab_received->get_data_fabric_received($data);
+
+    echo json_encode($result);
+
+  }
+
   public function index(){
     // Untuk Received Fabric
     $this->session->set_userdata('ses_page','fab_received');

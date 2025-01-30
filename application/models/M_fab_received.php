@@ -5,6 +5,69 @@
 */
 class M_fab_received extends CI_Model{
 
+  public function update_fab_qty_received_by_table($data){
+    $query = $data;
+
+    $result = $this->db->query($query);
+
+    if($result){
+      return "success";
+    }else{
+      return "false";
+    }
+  }
+  public function update_eta_by_table($data){
+    $query = $data;
+
+    $result = $this->db->query($query);
+
+    if($result){
+      return "success";
+    }else{
+      return "false";
+    }
+
+    // return $query;
+  }
+  public function update_etd_by_table($data){
+    $query = $data;
+
+    $result = $this->db->query($query);
+
+    if($result){
+      return "success";
+    }else{
+      return "false";
+    }
+  }
+  public function update_fab_received_date_by_table($data){
+    $query = $data;
+
+    $result = $this->db->query($query);
+
+    if($result){
+      return "success";
+    }else{
+      return "false";
+    }
+  }
+
+  public function get_data_fabric_received($zroh){
+    $query = "SELECT
+                * 
+              FROM 
+                prominent.v_fabric_received
+              WHERE 
+                zroh = ".$this->db->escape($zroh)."";
+
+    $result = $this->db->query($query)->result_array();
+    if($query){
+      return $result;
+    }else{
+      return false;
+    } 
+  }
+
   public function update_fab_received_date($data){
     $this->db->trans_start();
       foreach ($data as $key) {
