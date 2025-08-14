@@ -8,7 +8,8 @@ $(document).ready(function () {
                 zroh_to_find: null,
                 edit_index : null,
                 edit_key: "",
-                idToEdit: null
+                idToEdit: null,
+                idDetail: null
 			};
 		},
 		mounted() {
@@ -30,16 +31,16 @@ $(document).ready(function () {
                         //Parsed Response
                         const parsedData = JSON.parse(response);
 
-                        //assign the fetched data to vue variable
-                        // vm.data_fabric_received =parsedData.map( item =>{
-                        //     item.eta = vm.formatDate(item.eta);
-                        //     item.etd = vm.formatDate(item.etd);
-                        //     item.fab_received = vm.formatDate(item.fab_received);
+                        // assign the fetched data to vue variable (kalau ditarik dari pgadmin yang baru)
+                        vm.data_fabric_received =parsedData.map( item =>{
+                            item.eta = vm.formatDate(item.eta);
+                            item.etd = vm.formatDate(item.etd);
+                            item.fab_received = vm.formatDate(item.fab_received);
 
-                        //     return item;
-                        // })
+                            return item;
+                        })
 
-                        vm.data_fabric_received = {...parsedData};
+                        // vm.data_fabric_received = {...parsedData};
 
                         //show the table and hide the popup
                         document.querySelector('.edit_fabric_received_get_zroh').style.display = 'none';
@@ -60,6 +61,8 @@ $(document).ready(function () {
                 this.edit_index = index;
                 //assign what column to edit
                 this.edit_key = whatToEdit;
+
+                this.idDetail = row['id_detail'];
 
                 if(whatToEdit === "fab_qty_received"){
                     this.idToEdit = row['id_detail'];
@@ -178,20 +181,30 @@ $(document).ready(function () {
             },
             queryEdit_fab_received_date(){
                 const vm = this;
+
+                let arrayQuery = [];
                 // const zroh = this.zroh_to_find;
                 const editQuery = `UPDATE prominent.t_invoice 
                                     SET ${this.edit_key} = '${this.data_fabric_received[this.edit_index]['fab_received'].trim()}'
                                     WHERE id = ${this.idToEdit}`;
+
+                const editFabQtyQuery = `UPDATE prominent.t_invoice_detail 
+                                        SET fab_qty_received = ${this.data_fabric_received[this.edit_index]['fab_qty_inv']}
+                                        WHERE id = ${this.idDetail}`;
+
+                arrayQuery.push(editQuery);
+                arrayQuery.push(editFabQtyQuery);
+
                 if(confirm("Are you sure you want to Update Data ?")){
                     
                     //%%%%%%%% KODE YANG DIJALANKAN %%%%%%%%//
                     $.ajax({
                         type: "post",
                         url: base_url + "update_fab_received_date_by_table",
-                        data: JSON.stringify(editQuery),
+                        data: JSON.stringify(arrayQuery),
                         success: function (response) {
                             // console.log("this is editQuery function log: ", JSON.parse(response));
-                            if(JSON.parse(response) === "success"){
+                            if(JSON.parse(response) === "Transaction committed!"){
                                 vm.fetchReceivedFabricData()
                             }else{
                                 alert("Update Failed!");
@@ -204,7 +217,9 @@ $(document).ready(function () {
                     //%%%%%%%% DEBUG %%%%%%%%//
                     // console.group();
                     // console.log(editQuery);
-                    // console.log("data type of fab_qty_receievd: ", typeof this.data_fabric_received[this.edit_index]['fab_qty_received'] )
+                    // console.log("data type of fab_qty_receievd: ", typeof this.data_fabric_received[this.edit_index]['fab_qty_received'] );
+                    // console.log("data type of fab_qty_inv: ", typeof this.data_fabric_received[this.edit_index]['fab_qty_inv'] );
+                    // console.log("fab_qty_inv: ", this.data_fabric_received[this.edit_index]['fab_qty_inv'] );
                     // console.groupEnd();
                 }else{
                     alert("Update Canceled!");

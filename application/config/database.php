@@ -73,6 +73,61 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => '192.168.100.2',
+// 	'username' => 'postgres',
+// 	'password' => 'Tsa!050792#',
+// 	'database' => 'db_prominent',
+// 	// 'dbdriver' => 'mysqli',
+// 	'dbdriver' => 'postgre',
+// 	'port' => 5433,
+// 	'dbprefix' => '',
+// 	'pconnect' => TRUE,
+// 	'db_debug' => TRUE,
+// 	// 'pconnect' => FALSE,
+// 	// 'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
+
+
+
+$db['default'] = array(
+	'dsn'	=> '',
+	'hostname' => '192.168.100.163',
+	'username' => 'enterprisedb',
+	'password' => '123456789',
+	'database' => 'db_prominent_localhost',
+	// 'dbdriver' => 'mysqli',
+	'dbdriver' => 'postgre',
+	'port' => 5444,
+	'dbprefix' => '',
+	'pconnect' => TRUE,
+	'db_debug' => TRUE,
+	// 'pconnect' => FALSE,
+	// 'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
 // $db['default'] = array(
 // 	'dsn'	=> '',
 // 	'hostname' => '192.168.100.163',
@@ -99,31 +154,31 @@ $query_builder = TRUE;
 // 	'save_queries' => TRUE
 // );
 
-$db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => '192.168.100.252',
-	'username' => 'postgres',
-	'password' => 'Tsa!050792#',
-	'database' => 'db_prominent',
-	// 'dbdriver' => 'mysqli',
-	'dbdriver' => 'postgre',
-	'port' => 5433,
-	'dbprefix' => '',
-	'pconnect' => TRUE,
-	'db_debug' => TRUE,
-	// 'pconnect' => FALSE,
-	// 'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
-);
+// $db['default'] = array(
+// 	'dsn'	=> '',
+// 	'hostname' => '192.168.100.252',
+// 	'username' => 'postgres',
+// 	'password' => 'Tsa!050792#',
+// 	'database' => 'db_prominent',
+// 	// 'dbdriver' => 'mysqli',
+// 	'dbdriver' => 'postgre',
+// 	'port' => 5433,
+// 	'dbprefix' => '',
+// 	'pconnect' => TRUE,
+// 	'db_debug' => TRUE,
+// 	// 'pconnect' => FALSE,
+// 	// 'db_debug' => (ENVIRONMENT !== 'production'),
+// 	'cache_on' => FALSE,
+// 	'cachedir' => '',
+// 	'char_set' => 'utf8',
+// 	'dbcollat' => 'utf8_general_ci',
+// 	'swap_pre' => '',
+// 	'encrypt' => FALSE,
+// 	'compress' => FALSE,
+// 	'stricton' => FALSE,
+// 	'failover' => array(),
+// 	'save_queries' => TRUE
+// );
 
 $db['second_db'] = array(
 	'dsn'	=> '',

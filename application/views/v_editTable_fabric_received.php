@@ -77,6 +77,7 @@
                 Note:
                 - Hanya bisa edit satu data pada satu baris saja
                 - tidak bisa edit data pada 2 baris sekaligus
+                - Mirip kaya kalau mau edit data di excel tapi terakhirnya harus pencet Enter
                 </code></pre>
             </div>
         </div>

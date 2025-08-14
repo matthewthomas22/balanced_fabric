@@ -34,6 +34,8 @@ class Fab_received extends CI_Controller{
 
     echo json_encode($result);
   }
+
+  //Ditambahin jadi otomatis update fab_qty_received
   public function update_fab_received_date_by_table(){
     $data = json_decode($this->input->raw_input_stream, true);
 

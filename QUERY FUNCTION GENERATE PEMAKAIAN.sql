@@ -19,7 +19,7 @@ BEGIN
         zroh,
         -- format pemakaian sebelumnya yang dipakai pa eka 
         -- '#INV: ' || COALESCE(fab_inv_no, 'EX-MILL ' || fab_inv_po) || ' ETD: ' || etd || ' PRICE: ' || COALESCE(fab_price, 0) AS keyy,
-
+ 
 
         COALESCE(fab_inv_no, 'EX-MILL ' || fab_inv_po) || ' ('|| COALESCE(fab_price, 0) || ') - ETD ' || TO_CHAR(etd, 'FMMM/FMDD/YY') || ', ETA '|| TO_CHAR(eta, 'FMMM/FMDD/YY')  as keyy,
         --PANDA2404010 (8.25) - ETD 4/16/24, ETA 4/18/24, in 4/22/24 & PANDA2404011 (8.25) - ETD 4/16/24, ETA 4/18/24, in 4/22/24 & PANDA2404007 (8.25) - ETD 4/16/24, ETA 4/22/24, in 4/24/24

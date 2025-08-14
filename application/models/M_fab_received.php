@@ -43,13 +43,31 @@ class M_fab_received extends CI_Model{
   public function update_fab_received_date_by_table($data){
     $query = $data;
 
-    $result = $this->db->query($query);
+    $this->db->trans_start();
+      foreach ($data as $key) {
+          $this->db->query($key);
+      }
+    $this->db->trans_complete();
 
-    if($result){
-      return "success";
-    }else{
-      return "false";
+    
+    if ($this->db->trans_status() === FALSE) {
+        $this->db->trans_rollback();
+        return "Transaction rolled back!";
+    } else {
+        $this->db->trans_commit();
+        return "Transaction committed!";
     }
+
+    // $result = $this->db->query($query);
+
+    // if($result){
+    //   return "success";
+    // }else{
+    //   return "false";
+    // }
+
+    //%%%%%%%%%%%%%% DEBUG %%%%%%%%%%%%%%//
+    // return $query; 
   }
 
   public function get_data_fabric_received($zroh){

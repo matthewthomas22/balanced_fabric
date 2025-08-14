@@ -496,6 +496,17 @@
                     //     }
                     // }else{
 
+                    // ❌ SOMETHING WRONG HERE ❌
+                    // ...Insert Error Information Here
+                    // 
+                    // ⬇️ ADA YANG SALAH DISINI ⬇️
+                    //    ||
+                    //    ||
+                    //    ||
+                    //  ==  ==
+                    //  \    /
+                    //   \  /
+                    //    \/
                     if ($ttl_rcvd >= $r['qty_issued']) {
                       if ( ($r['status_cons'] == "ACTUAL") || ($r['status_cons'] == "APPROVE") ) {
                         echo "<td><span class='greenDot'></span> &nbsp CUT</td>";
